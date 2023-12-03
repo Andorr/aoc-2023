@@ -1,4 +1,6 @@
-﻿namespace utils;
+﻿using System.Diagnostics;
+
+namespace utils;
 public class Dict<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
     public override string ToString()
@@ -51,3 +53,16 @@ public static class Extensions
         return new(self);
     }
 }
+
+
+public static class ArrayUtils
+{
+    // Array of all the 8 directions
+    public static readonly (int, int)[] frame = new (int, int)[]
+    {
+        (-1, -1), (-1, 0), (-1, 1),
+        (0, -1), (0, 1),
+        (1, -1), (1, 0), (1, 1)
+    };
+}
+
