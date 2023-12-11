@@ -3,6 +3,10 @@
 namespace utils;
 public class Dict<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
+    public Dict() : base() { }
+
+    public Dict(Dictionary<TKey, TValue> d) : base(d) { }
+
     public override string ToString()
     {
         return $"{{{string.Join(", ", this.Select(x => $"{x.Key}={x.Value}"))}}}";
@@ -52,6 +56,11 @@ public static class Extensions
     {
         return new(self);
     }
+
+    public static Dict<T, K> ToDict<T, K>(this Dictionary<T, K> self) where T : notnull
+    {
+        return new(self);
+    }
 }
 
 
@@ -63,6 +72,12 @@ public static class ArrayUtils
         (-1, -1), (-1, 0), (-1, 1),
         (0, -1), (0, 1),
         (1, -1), (1, 0), (1, 1)
+    };
+
+    public static readonly (int, int)[] adjecent = new (int, int)[]
+    {
+        (0, -1), (0, 1),
+        (-1, 0), (1, 0)
     };
 }
 
